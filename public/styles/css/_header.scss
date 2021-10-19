@@ -1,0 +1,131 @@
+nav {
+  
+
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    background-color: $background;
+    color: $blue;
+    
+   
+    
+    ul {
+      
+      text-decoration: none;
+      list-style: none;
+      li {
+        color: $white;
+        text-decoration: none;
+        list-style: none;
+        a{
+          color: $white;
+          text-decoration: none;
+          &:hover{
+            text-decoration: underline $white;
+          }
+          &:active{
+            text-decoration: underline $white;
+            color: $blue;
+          }
+        }
+        display: inline;
+        list-style: none;
+        text-decoration: none;
+        font-size: 20px;
+        margin-right: 140px;
+        button {
+          color: $white;
+          background: #0c6ebe;
+          border: none;
+          padding: 15px;
+          font-size: 18px;
+        }
+      }
+    }
+  }
+
+header {
+    height: 720px;
+    .logo {
+      padding-top: 140px;
+      h1{
+          margin-top: 40px;
+      }
+    }
+  }
+  @media only screen and (max-width: 600px) {
+    /* Config */
+:root {
+  --burger-button-size: 1.6rem;
+  --burger-button-thickness: 6px;
+  --burger-button-color: purple;
+  --nav-bg: transparent;
+  --nav-link-bg: bisque;
+  --nav-link-color: #000;
+  --nav-link-hover: peru;
+  --main-bg: beige;
+}
+
+
+
+/* styling opened nav */
+.navigation {
+  transition: max-height .25s;
+  will-change: max-height;
+}
+.navigation.is-opened {
+  max-height: 20rem;
+  overflow: visible;
+}
+
+
+
+/* styling button */
+.burger-button {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  all: unset;
+  display: inline-grid;
+  grid-template-rows: repeat(3, var(--burger-button-thickness));
+  align-content: space-between;
+  vertical-align: top;
+  height: var(--burger-button-size);
+  width: var(--burger-button-size);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.burger-button>*,
+.burger-button::after, 
+.burger-button::before {
+  content: "";
+  background: var(--burger-button-color);
+}
+.burger-button:focus-visible {
+  /* affichage du focus lors de la navigation au clavier */
+  outline: 2px dashed var(--burger-button-color);
+  outline-offset: 5px;
+}
+
+
+
+
+
+
+.navigation {
+  background: var(--nav-bg);
+}
+.navigation__link {
+  padding: 1rem;
+  background: var(--nav-link-bg);
+  color: var(--nav-link-color);
+  text-decoration: none;
+}
+.navigation__link:hover,
+.navigation__link:focus,
+.navigation__link:active {
+  background: var(--nav-link-hover);
+}
+  }

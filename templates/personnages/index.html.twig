@@ -1,0 +1,175 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello PersonnagesController!{% endblock %}
+
+{% block body %}
+    <div class="camp">
+        <h2 class="textcenter">Choisissez votre</h2>
+        <h3 class="textcenter">CAMP</h3>
+    </div>
+    <div id="myApp">
+        <section>
+            <div class="tabs">
+                <nav>
+                    <router-link to="/">Tout</router-link> -
+                    <router-link to="/requin">Requin</router-link> -
+                    <router-link to="/dauphin">Dauphin</router-link> -
+                </nav>
+
+            </div>
+
+            <div id="content">
+                <router-view></router-view>
+            </div>
+
+
+        </section>
+    </div>
+    <script>
+        // source: Vue3 documentation : "https://next.router.vuejs.org/guide/#javascript"
+        const appCode = {
+            data() {
+                return {
+                }
+            }
+        };
+
+
+        // ROUTING
+        // 1. define some components
+        const tout = { template: '<div class="requin"><img class="petit" src="images/requin/megal.png" alt="megal"><img class="petit" src="images/requin/shar_pille.png" alt="sharpille"><img class="petit" src="images/requin/sharkness.png" alt="megal"><img class="petit" src="images/requin/tony_shark.png" alt="megal"><img class="petit" src="images/dauphin/delphine.png" alt="megal"><img class="petit" src="images/dauphin/la_dent_de_la_mer.png" alt="megal"><img class="petit" src="images/dauphin/will_e.png" alt="megal">" </div>' }
+        const requin = { template: '<div class="requin"><img class="petit" src="images/requin/megal.png" alt="megal"><img class="petit" src="images/requin/shar_pille.png" alt="sharpille"><img class="petit" src="images/requin/sharkness.png" alt="megal"><img class="petit" src="images/requin/tony_shark.png" alt="megal"> </div>'  }
+        const dauphin = { template: '<div class="requin"><img class="petit" src="images/dauphin/delphine.png" alt="megal"><img class="petit" src="images/dauphin/la_dent_de_la_mer.png" alt="megal"><img class="petit" src="images/dauphin/will_e.png" alt="megal"> </div>' }
+
+
+
+        // 2. define some routes
+        const myRoutes = [
+            { path: '/', component: tout },
+            { path: '/requin', component: requin },
+            { path: '/dauphin', component: dauphin }
+
+        ]
+        // 3. create the router instance
+        const myRouter = VueRouter.createRouter({
+            // 4. Provide the history implementation to use. We are using the hash history for simplicity here.
+            history: VueRouter.createWebHashHistory(),
+            routes: myRoutes
+        })
+
+        myApp = Vue.createApp(appCode)
+        // 5. use the router
+        myApp.use(myRouter)
+        myApp.mount('#myApp')
+
+    </script>
+    <script>
+        const appCode = {
+            data() {
+                return {
+
+                    afficherDauphin : false,
+                    afficherRequin : false,
+                    currentTab: 'fruits',
+                    tabs: ['fruits', 'veges'],
+
+                    tout: [
+                        {
+                            index: 0,
+                            nom: "Marteaurnade",
+                            descrition: "Son marteau, Bien qu'il en soit déjà un lui-même, lui permet de briser des obstacles sans devenir ",
+                            rôle: "Rapidité",
+                        },
+                        {
+                            index: 1,
+                            nom: "Tony Shark",
+                            descrition: "Je ne dis pas qu'ils sont la même personne mais on ne la jamais vu lui et le requin araignée dans la même pièce au même moment!",
+                            rôle: "leader",
+
+                        },
+                        {
+                            index: 2,
+                            nom: "Requo Vulovic",
+                            descrition: "Il insiste être de l'espèce du 'Requin panthère' malgré que sa tête applatie et sa dentition attroce le place plus proche du bouledogue qu'autre chose. Ne retire jamais ses lunnettes de soleil.",
+                            rôle: "Intelligence",
+
+
+                        },
+                        {
+                            index: 3,
+                            nom: "Will E",
+                            descrition: "Vétéran des guerres humaines, il remercie pourtant souvent une certaine 'Jesse' de l'avoir sauvé.Excellent démagogue.",
+                            rôle: "leader",
+                            image: "images/king_shark.png",
+
+
+                        },
+                        {
+                            index: 4,
+                            nom: "Fawkes Hawk",
+                            descrition: "Bras droit de Will E.Malgré sa position, il a un orque-oeuil ",
+                            rôle: "Intelligence",
+
+
+                        },
+                        {
+                            index: 5,
+                            nom: "Boto-feu",
+                            descrition: "Il effraie souvent sans s'en rendre compte de par sa carrure imposante. Pourtant, il ne cherche qu'à apporter son amour pour la vie et est même cuisinier volontaire pour les espèce en voie de disparition.",
+                            rôle: "Force",
+
+
+                        },
+
+                    ],
+                    requin: [
+                        {
+                            index: 0,
+                            nom: "Marteaurnade",
+                            descrition: "Son marteau, Bien qu'il en soit déjà un lui-même, lui permet de briser des obstacles sans devenir ",
+                            rôle: "Rapidité",
+                        },
+                        {
+                            index: 1,
+                            nom: "Tony Shark",
+                            descrition: "Je ne dis pas qu'ils sont la même personne mais on ne la jamais vu lui et le requin araignée dans la même pièce au même moment!",
+                            rôle: "leader",
+                        },
+                        {
+                            index: 2,
+                            nom: "Requo Vulovic",
+                            descrition: "Il insiste être de l'espèce du 'Requin panthère' malgré que sa tête applatie et sa dentition attroce le place plus proche du bouledogue qu'autre chose. Ne retire jamais ses lunnettes de soleil.",
+                            rôle: "Intelligence",
+                        }
+                    ],
+                    dauphin: [
+                        {
+                            index: 0,
+                            nom: "Will E",
+                            descrition: "Vétéran des guerres humaines, il remercie pourtant souvent une certaine 'Jesse' de l'avoir sauvé.Excellent démagogue.",
+                            rôle: "leader",
+                            image: "images/king_shark.png",
+                        },
+                        {
+                            index: 1,
+                            nom: "Fawkes Hawk",
+                            descrition: "Bras droit de Will E.Malgré sa position, il a un orque-oeuil ",
+                            rôle: "Intelligence",
+                        },
+                        {
+                            index: 2,
+                            nom: "Boto-feu",
+                            descrition: "Il effraie souvent sans s'en rendre compte de par sa carrure imposante. Pourtant, il ne cherche qu'à apporter son amour pour la vie et est même cuisinier volontaire pour les espèce en voie de disparition.",
+                            rôle: "Force",
+                        }
+                    ],
+
+                }
+            }
+        };
+
+
+        myApp = Vue.createApp(appCode);
+        myApp.mount("#content");
+    </script>
+{% endblock %}

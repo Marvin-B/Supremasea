@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Supremasea - {% block title %}{% endblock %}</title>
+        {# Run `composer require symfony/webpack-encore-bundle`
+           and uncomment the following Encore helpers to start using Symfony UX #}
+        {% block stylesheets %}
+            <!--encore_entry_link_tags('app')-->
+            <link rel="stylesheet" href="{{ asset('styles/css/style.css') }}">
+            <link rel="stylesheet" href="{{ asset('styles/animate.min.css') }}">
+        {% endblock %}
+
+        {% block javascripts %}
+             {{ encore_entry_script_tags('app') }}
+            <script src="{{ asset('script/vue.js') }}"></script>
+            <script src="{{ asset('script/vue-router.js') }}"></script>
+
+        {% endblock %}
+    </head>
+    <body>
+        {% block nav %}
+            <nav class="menu">
+                <ul>
+                    <li><a href="{{ path('homepage') }}">Accueil</a></li>
+                    <li><a href="{{ path('homepage') }}">Actualités</a></li>
+                    <li><a href="{{ path('personnages') }}">Personnages</a></li>
+                    <li><a href="http://www.simon-guillet.fr/promo/">Acheter le jeu</a></li>
+                    {% if app.user %}
+                        <li><a href="{{ path('app_logout') }}">Deconnexion</a></li>
+                    {% endif %}
+                    {% if app.user == false %}
+                        <li><a href="{{ path('app_login') }}">Connexion</a></li>
+                        <li><a href="{{ path('app_register') }}">Inscription</a></li>
+                    {% endif %}
+                    <li><button><a href="{{ path('profil') }}">Jouer maintenant</a></button></li>
+                </ul>
+            </nav>
+        {% endblock %}
+        {% block body %}{% endblock %}
+        <footer>
+        {% block footer %}
+            <h1 class="textcenter">Footer</h1>
+        {% endblock %}
+        </footer>
+    </body>
+</html>
+
+{# {{ parent()}} => permet de récupérer ce qu'il y a dans le bloc de base html et d'ajouter après #}
+{# les blocs effacent le contenu de base html ; donc mettre hors du bloc dans base html pour récupérer sur toutes les pages #}
